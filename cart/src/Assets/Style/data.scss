@@ -1,0 +1,14 @@
+//color
+$main_color: #ff8d00a1;;
+$color_light_black:#495057;
+$color_black:#282C30;
+$color_light_gray:#E1E4E7;
+$color_gray:#ADB5BD;
+$color_red:FireBrick;
+//
+.back_red{background: $color_red}
+.back_black{background: $color_black}
+.back_gray{background:$color_gray }
+
+//font-family
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');

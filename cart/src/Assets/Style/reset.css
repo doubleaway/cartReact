@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  word-break: break-all;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+}
+
+svg {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+/*# sourceMappingURL=reset.css.map */

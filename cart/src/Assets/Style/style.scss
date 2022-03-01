@@ -1,0 +1,426 @@
+@import "reset","mixin","data";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+html,body{
+  font-family: 'Dongle', sans-serif;
+  font-size: 18px;
+  background-color: #fdbe7f28;
+}
+hr{
+
+  border: 0.5px solid rgba(0,0,0,0.1);
+  margin: {
+    top:15px;
+    bottom: 15px;
+  };
+}
+img{
+  background-color: white;
+}
+
+// 기타
+.axent{font-size: 1.5em}
+
+//공통 스타일
+.count_box{
+  margin-top: 5px;
+span{
+  outline: 1px solid $color_light_gray;
+  @include size(30px,30px);
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;cursor: pointer;
+}
+}
+article{
+  background-color: white;
+  height: 87vh;
+}
+
+// button
+.close_btn{
+  @include size(20px,20px);
+  background-color: $color_light_gray;
+  border-radius: 100%;
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  color:$color_black;
+  cursor: pointer;
+}
+.btn{cursor: pointer;}
+//button 끝
+header{
+  @include size(100%,50px);
+  border-bottom: 1px solid #eee;
+  font-size: 2rem;
+  line-height: 50px;
+  padding: 0 5%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  background-color: $color_black;
+  // background-color:#F5EEE7;
+  color:white;
+
+  span{
+    font-size:1rem;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+  div{
+    position: relative;
+    cursor: pointer;
+    span{
+      position: absolute;
+      top:12.5px;
+      right: -5px;
+      display: inline-block;
+      // background-color: $color_black;
+      background-color: red;
+      @include size(15px,15px);
+      border-radius: 100%;
+      line-height: 15px;
+      // color:white;
+      text-align: center;
+      
+      font-size: 1rem;
+    }
+  }
+
+}
+.body_box{
+
+  width: 70%;
+  margin-left: 15%;
+  display: flex;
+  font-size: 1.25rem;
+  padding-top: 70px;
+  &>div{
+    width:40%;
+  }
+  .pic_box{
+    width: 60%;
+    padding-left: 5%;
+    box-sizing: border-box;
+    .main{
+      img{
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    div{
+      img{
+        height: 100%;
+        outline: 1px solid $color_light_gray;
+        border-radius: 10px;
+      }
+    }
+    .main{
+      @include size(80%,450px);
+
+    }
+    .sub{
+      @include size(100%,120px);
+      margin-top: 15px;
+      img{
+        padding: 0 5px;
+        cursor: pointer;
+        margin-right: 3px;
+        &:first-child{
+          padding: 0 0;
+        }
+        // border: 1px solid $color_light_gray;
+        outline:none;
+        box-shadow: 1px 1px 1px 1px  $color_light_gray;
+     
+      }
+    }
+  }
+  .content_box{
+    @include size(40%,auto);
+    background-color: rgba(255,255,255,1);
+    padding-right: 5%;
+    box-sizing: border-box;
+    &>div{
+      p{
+        margin-left: 15px;
+        font-size: 1.25rem;
+      }
+    }
+  }
+.ex_box{
+
+  padding: 0 2.5%;
+  box-sizing: border-box;
+  &>div{
+    display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
+
+  }
+  h1{
+    font-size: 2rem;
+  }
+  
+//  안내 박스
+  .info_box{
+    font-size: 1rem;
+    .axent{
+      color:$main_color;
+      font:{
+        size: 1.25rem;
+        weight: bold;
+      }
+
+    }
+  }
+//  색깔 변경 버튼
+.color_change_button_box{
+  h1{
+    line-height: 65px;
+  }
+  .btn_color_change{
+    @include size(30px,30px);
+    border-radius: 5%;
+    // outline: 1px solid $color_light_gray;
+    margin-left: 15px;
+    // box-shadow: 2px 2px 2px rgba(0,0,0,0.7);
+  }
+  ul {
+    display: flex;
+    margin-top: 15px;
+    li{
+      cursor: pointer;
+    }
+  }
+}
+}
+
+  .select_box{
+    width:100%;
+    border:1px solid $color_light_gray;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    // background: #282C30;
+    select{
+      @include size(50%,50px);
+      border:1px solid $color_light_gray;
+      option{
+        height: 50px;
+      }
+    }
+    .result_box{
+      display: flex;
+      justify-content: space-between;
+      p{
+        color: red;
+        line-height: 30px;
+
+      }
+    }
+    //리스트 내부 아이템
+    .list_item{
+        position: relative;
+        border:{
+          bottom: 1px solid $color_light_gray;
+     
+
+        }
+        .close_btn{
+            position: absolute;
+            right:0px;
+            top: 20px;
+        }
+        padding:{
+          top:15px;
+          bottom:15px;
+        }
+
+
+    }
+
+    .button_box{
+      @include size(100%,60px);
+      margin-top:15px;
+      button{
+        @include size(100%,100%);
+        background-color: $main_color;
+        color:white;
+        font:{
+          weight:bold;
+          size: 1rem;
+        }
+      }
+      div{
+        @include size(100%,100%);
+        background-color: $color_light_gray;
+        text-align: center;
+        line-height: 55px;
+      }
+    }
+  }
+}
+.cart_title{
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}
+.shopping_cart{
+  // display: none;
+  position: absolute;
+  left: 0;
+  top:49px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 0 5%;
+  box-sizing: border-box;
+  // z-index: 100;
+  h1{
+    width:100%;
+    display: block;
+  }
+  &>div{
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    right: 0;
+  }
+  @include size(100%,100%);
+  .shopping_list_box{
+
+    @include size(100%,auto);
+    .shopping_list{
+      display: flex;
+      height: 80px;
+      line-height: 50px;
+      .close_btn{
+        // margin-top:25px;
+        vertical-align: middle;
+        padding-left: 0;
+        text-indent: 0;
+        margin-top:-10px;
+      }
+      li{
+        text-indent: 15px;
+        border-bottom: 1px solid $color_light_gray;
+        padding: 15px 0;
+        vertical-align: baseline;
+        &:nth-child(1){width: 45%;}
+        &:nth-child(2){width: 15%;}
+        &:nth-child(3){width: 15%;}
+        &:nth-child(4){width: 15%;}
+         img{
+          width: 50px;
+          border: 1px solid $color_light_gray;
+          border-radius: 3px;
+        }
+        &>span{
+          vertical-align: top;
+          padding-left: 15px;
+        }
+        &.count_box{
+          text-indent: 0;
+          span{
+            padding-left: 0;
+            cursor: pointer;
+          }
+        }
+      }
+
+    }
+    .list_category{
+      height: 50px;
+      border:{
+
+        bottom:1px solid $color_light_gray;
+      }
+      li{
+        padding:0 0;
+        font-weight: bold;
+      }
+    }
+  }
+  .shopping_result_box{
+
+    @include size(100%,auto);
+    box-sizing: border-box;
+    background-color: #eee;
+    &>h1{
+      height: 65px;
+      line-height: 65px;
+
+      padding:0 5%;
+      box-sizing: border-box;
+    }
+    ul{
+      padding:0 5%;
+      box-sizing: border-box;
+
+    }
+    li{
+      height: 55px;
+      line-height: 55px;
+      display: flex;
+      justify-content: space-between;
+      span{
+        
+      }
+    }
+    .total_box{
+      height: 60px;
+
+      background-color: #ccc;
+      h1{
+        background-color: #ccc;
+        line-height: 60px;
+      }
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.cart_nav{
+  @include size(100%,35px);
+  background-color: $color_black;
+  line-height: 35px;
+  color:white;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15%;
+  box-sizing: border-box;
+  p{
+    svg{
+      cursor: pointer;
+    }
+  }
+}
+@media all and (max-width: 780px){
+  header{
+    span{
+      display: none;
+    }
+  }
+  .body_box{
+    display: block;
+    width:100%;
+    &>div{
+      width:100%;
+      margin-top: 30px;
+    }
+    .pic_box{
+      margin-left: 0;
+      padding: 0 5%;
+      box-sizing: border-box;
+
+      .main{
+        width:100%;
+      }
+    }
+    .select_box{
+      width:100%;
+    }
+  }
+}
