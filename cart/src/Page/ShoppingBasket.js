@@ -13,6 +13,7 @@ const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
         <section className="shopping_cart">
             <div>
                 <h1 className="cart_title"><AiOutlineShopping/> Your Cart</h1>
+                <hr/>
                 <article className="shopping_list_box">
                     <ul className="shopping_list list_category">
                         <li>Title</li>

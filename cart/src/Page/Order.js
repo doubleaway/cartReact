@@ -15,7 +15,7 @@ const Order=({onAdd})=>{
         id:0,
         count:'',
         size:'',
-        color:''
+        color:'',
     }]);
 
 
@@ -25,7 +25,7 @@ const Order=({onAdd})=>{
 
     // count,calc
     const [count,setCount]=useState(1);
-    const [allCount,setAllCount]=useState(1);
+    const [allCount,setAllCount]=useState(0);
     const [calc,setCalc]=useState(0);
     const [cart,setCart]=useState(0);
 
@@ -39,7 +39,6 @@ const Order=({onAdd})=>{
     const [colorCh,setColorCh]=useState("black");
     const colorChange=useCallback((color)=>{setColorCh(color);},[colorCh]);
 
-    if(allCount>10){setAllCount(10);}
     const price=26000;
 
 
@@ -51,10 +50,10 @@ const Order=({onAdd})=>{
         setAllCount(allCount);
         setCalc((Number(price)*(allCount)));
     }
-    const alldeCountFunc=(allCount)=>{
-        setAllCount(allCount);
-        setCalc((Number(price)*(allCount)));
-    }
+    // const alldeCountFunc=(allCount)=>{
+    //     setAllCount(allCount);
+    //     setCalc((Number(price)*(allCount)));
+    // }
     const onDecrese=(count)=>{setCount(count);}
 
     // const OnCounterFunc=(id,counter)=>{onCounter(id,counter);}
@@ -62,30 +61,34 @@ const Order=({onAdd})=>{
 
     // select box
     const size=['M',"S","XL","XS","L"];
-    const color=["gray","black","red"];
+    const color=["black","gray","red"];
     const [colorSelected,setColorSetSelected]=useState('');
     const [sizeSelected,setSizeSetSelected]=useState('');
 
     // 확인용
-    const [selectCheck,setSelectCheck]=useState('');
+    // const [selectCheck,setSelectCheck]=useState('');
 
     const onSelect=(e)=>{
         setSizeSetSelected(e.target.value);
-        setSelectCheck('');
         setColorSetSelected('');
     }
+
+
     const onColorSelect=(e)=>{
         e.preventDefault();
         setColorSetSelected(e.target.value);
-            // onAdd(sizeSelected, colorSelected,count);       
     }
 
 
     const onSelectAdd=()=>{
-    
-            if(colorSelected!==''&&selectCheck!==colorSelected){  
+
+            if(colorSelected!==''){
+             
                 addOrder(count); 
-                setSelectCheck(colorSelected);
+                setColorSetSelected('');
+                setSizeSetSelected('');
+         
+         
             }
     }
 
@@ -103,6 +106,7 @@ const Order=({onAdd})=>{
         };
         setListData(listData.concat(listDataAdd));
         setCart(cart=>cart+1);
+
     }
     //삭제
     const deleteOrder=(id)=>{
@@ -115,6 +119,14 @@ const Order=({onAdd})=>{
     // 실제장바구니 값 
     const cartListAdd=()=>{
         onAdd(listData);
+        setListData([{
+            id:0,
+            count:'',
+            size:'',
+            color:'',
+        }]);
+        setAllCount(0);
+        setCalc(0);
     }
 
 
@@ -141,7 +153,7 @@ return(
             <article className="content_box">
                 <div className="ex_box">
                     <h1>
-                        무지 오리지널 후드티 | 블랙 | 레드 | 그레이 
+                        무지 오리지널 후드티 | 블랙  | 그레이 | 레드
                     </h1>
                     <p></p>
                     <hr/>
@@ -172,10 +184,10 @@ return(
                         {color.map((select,idx)=><option  value={select} key={idx}>{select}</option>)}
                     </select>
                     <hr/>
-                    <p>최대 구매 수량 10개</p>
+                    <p>최대 구매 수량 5개</p>
                     <hr/>
                     <div>
-                        <List data={listData} count={count} onIncrease={onIncrease} onDecrese={onDecrese} allCount={allCount} allCountFunc={allCountFunc} alldeCountFunc={alldeCountFunc} deleteOrder={deleteOrder}/>
+                        <List data={listData} count={count} onIncrease={onIncrease} onDecrese={onDecrese} allCount={allCount} allCountFunc={allCountFunc}  deleteOrder={deleteOrder}/>
                     </div>
                     <hr/>
                     <div className="result_box">
@@ -183,7 +195,7 @@ return(
                         <p> <span className="axent">{calc}</span><span>원</span></p>
                     </div>
                     <div className="button_box">
-                       {cart? <button onClick={cartListAdd}>구입하기</button>:<div>구입하기</div>}
+                       {allCount>0? <button onClick={cartListAdd}>장바구니</button>:<div>구입하기</div>}
                     </div>
                 </div>
             </article>
