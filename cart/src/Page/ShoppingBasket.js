@@ -20,20 +20,10 @@ const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
                         <li>Size</li>
                         <li>Count</li>
                     </ul>
-                    <ul className="shopping_list">
-                        <li><img src='./img/blackcloth (1).png'/><span>we don't talk bruno nonono</span></li>
-                        <li>Black</li>
-                        <li>S</li>
-                        <li className="count_box">
-                            <span>+</span>
-                            <span>1</span>
-                            <span>-</span>
-                        </li>
-                        <li><span className="close_btn">X</span></li>
-                    </ul>
-                    <ul>
+
+                    <ul >
                     {
-                     selectCount.data_con.map(data=>data.id==0?'':<CartListItem data={data} id={data.id}/>)
+                     selectCount.data_con.map(data=>data.id==0?'':<CartListItem key={data.id} data={data} id={data.id}/>)
                  }
 
                     </ul>

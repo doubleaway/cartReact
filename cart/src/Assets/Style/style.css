@@ -206,6 +206,7 @@ header div span {
   padding-right: 5%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  overflow: auto;
 }
 
 .body_box .content_box > div p {

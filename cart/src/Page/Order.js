@@ -61,22 +61,32 @@ const Order=({onAdd})=>{
 
 
     // select box
-    const sizeSentense='사이즈를 선택해주세요';
-    const colorSentense='색상을 선택해주세요';
     const size=['M',"S","XL","XS","L"];
     const color=["gray","black","red"];
-    const [colorSelected,setColorSetSelected]=useState(colorSentense);
-    const [sizeSelected,setSizeSetSelected]=useState(sizeSentense);
+    const [colorSelected,setColorSetSelected]=useState('');
+    const [sizeSelected,setSizeSetSelected]=useState('');
+
+    // 확인용
+    const [selectCheck,setSelectCheck]=useState('');
+
     const onSelect=(e)=>{
         setSizeSetSelected(e.target.value);
+        setSelectCheck('');
+        setColorSetSelected('');
     }
     const onColorSelect=(e)=>{
         e.preventDefault();
         setColorSetSelected(e.target.value);
-        if(colorSelected!==colorSentense)
-            addOrder(count); 
-            // onAdd(sizeSelected, colorSelected,count);
-           
+            // onAdd(sizeSelected, colorSelected,count);       
+    }
+
+
+    const onSelectAdd=()=>{
+    
+            if(colorSelected!==''&&selectCheck!==colorSelected){  
+                addOrder(count); 
+                setSelectCheck(colorSelected);
+            }
     }
 
 
@@ -155,11 +165,11 @@ return(
                 <div className="select_box">
                         <select  value={sizeSelected} onChange={onSelect}>
                                 <option value=''>사이즈를 선택해주세요</option>
-                            {size.map(select=><option value={select} key={select}>{select}</option>)}
+                            {size.map((select,idx)=><option value={select} key={idx}>{select}</option>)}
                     </select>
-                    <select  value={colorSelected}  onChange={onColorSelect} >
+                    <select  value={colorSelected}  onChange={onColorSelect} onClick={onSelectAdd}>
                         <option value=''>색상을 선택해주세요</option>
-                        {color.map(select=><option  value={select} key={select}>{select}</option>)}
+                        {color.map((select,idx)=><option  value={select} key={idx}>{select}</option>)}
                     </select>
                     <hr/>
                     <p>최대 구매 수량 10개</p>

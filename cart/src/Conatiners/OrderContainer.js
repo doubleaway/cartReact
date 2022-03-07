@@ -11,7 +11,7 @@ const onDelete=useCallback((id)=>dispatch(remove(id)),[dispatch]);
 const onCounter=useCallback((id,counter)=>dispatch(counterChange(id,counter)),[dispatch]);
     return(
         <>
-        {selectCont.data_con.map(m=><div>{m.id}</div>)}
+        {selectCont.data_con.map(m=><div key={m.id}>{m.id}</div>)}
     <ShoppingBasket selectCount={selectCont} onCounter={onCounter} onDelete={onDelete}/>
     </>
     )

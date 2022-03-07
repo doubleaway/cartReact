@@ -15,7 +15,7 @@ console.log(data);
     )
 }
 
-const CartListItem=({data})=>{
+const CartListItem=({data,key})=>{
     const [test,setTest]=useState(1);
     const {id,color,size,count}=data;
     console.log(data);
@@ -48,7 +48,7 @@ const CartListItem=({data})=>{
 
     return   (
        
-                <ul className="shopping_list">
+                <ul className="shopping_list" key={key}>
                         <li><img src={img}/><span>{title} {color}</span></li>
                         <li>{color}</li>
                         <li>{size}</li>
