@@ -20,7 +20,7 @@ const ListItem=({data,count,onIncrease,onDecrese,allCount,allCountFunc,deleteOrd
 
     
     const onClick=()=>{
-        if(allCount<=0||test<=0){}
+        if(allCount<=1||test<=1){}
 
         else{
         allCountFunc(allCount-1);

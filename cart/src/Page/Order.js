@@ -19,7 +19,7 @@ const Order=({onAdd})=>{
     }]);
 
 
-
+    var cartVal=0;
     var [listId,setListId]=useState(1);
 
 
@@ -82,14 +82,16 @@ const Order=({onAdd})=>{
 
     const onSelectAdd=()=>{
 
-            if(colorSelected!==''){
-             
+            if(colorSelected!==''&&allCount<5){
                 addOrder(count); 
                 setColorSetSelected('');
                 setSizeSetSelected('');
-         
-         
+                cartVal+=1;
+                console.log(cartVal);
             }
+         
+            
+
     }
 
 
@@ -105,13 +107,15 @@ const Order=({onAdd})=>{
             size: sizeSelected
         };
         setListData(listData.concat(listDataAdd));
-        setCart(cart=>cart+1);
+        // setCart(cart=>cart+1);
+        setAllCount(allCount=>allCount+=1);
+        allCountFunc(allCount+=1);
 
     }
     //삭제
     const deleteOrder=(id)=>{
         setListData(listData.filter(list=>list.id!==id));
-        setCart(cart=>cart-1);
+        cartVal>0?cartVal--:cartVal=0;
     }
 
 
@@ -127,6 +131,7 @@ const Order=({onAdd})=>{
         }]);
         setAllCount(0);
         setCalc(0);
+        setCart(cartVal);
     }
 
 

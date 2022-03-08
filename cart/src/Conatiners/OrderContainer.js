@@ -12,7 +12,7 @@ const onCounter=useCallback((id,counter)=>dispatch(counterChange(id,counter)),[d
     return(
         <>
         {selectCont.data_con.map(m=><div key={m.id}>{m.id}</div>)}
-    <ShoppingBasket selectCount={selectCont} onCounter={onCounter} onDelete={onDelete}/>
+        <ShoppingBasket selectCount={selectCont} onCounter={onCounter} onDelete={onDelete}/>
     </>
     )
 }

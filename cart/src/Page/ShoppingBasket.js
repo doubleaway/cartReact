@@ -5,11 +5,8 @@ import CartList from "../Components/cartList";
 import CartListItem from "../Components/cartList";
 
 const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
-    console.log(selectCount.data_con);
     return (
         <>
-
-
         <section className="shopping_cart">
             <div>
                 <h1 className="cart_title"><AiOutlineShopping/> Your Cart</h1>
