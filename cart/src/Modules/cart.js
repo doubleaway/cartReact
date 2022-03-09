@@ -70,8 +70,8 @@ export default function cart(state=data,action){
         }
 
         case QUANTITY:
-            console.log(action)
-            return  state.map( memo => memo.id === action.id ? {...memo, counter: action.counter} : memo)
+            console.log(action.id)
+            // return  state.map( memo => memo.id === action.id ? {...memo, counter: action.counter} : memo)
             // {
                 
                 // ...state,
@@ -81,8 +81,10 @@ export default function cart(state=data,action){
 
 
         case REMOVE:
-                return state.filter(memo=>memo.id!==action.id)
-
+            return{
+                ...state,
+                data_con:state.data_con.filter(data=>data.id!==action.id)
+            }
 
 
         default:return state;

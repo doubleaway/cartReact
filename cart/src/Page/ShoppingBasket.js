@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "../Components/List";
 import { AiFillHome,AiOutlineShopping } from "react-icons/ai";
 import CartList from "../Components/cartList";
 import CartListItem from "../Components/cartList";
 
-const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
+const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
+    const [priceResult,setPriceResult]=useState(26000);
+    const onPriceCalc=(count)=>{
+       setPriceResult(price*count);
+    }
+
+    const deleteOrder=(id)=>{
+        onDelete(id);
+    }
     return (
         <>
         <section className="shopping_cart">
@@ -21,7 +29,7 @@ const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
 
                     <ul >
                     {
-                     selectCount.data_con.map(data=>data.id==0?'':<CartListItem key={data.id} data={data} id={data.id}/>)
+                     selectCount.data_con.map(data=>data.id==1000||data.id===0?'':<CartListItem deleteOrder={deleteOrder} onCounter={onCounter} key={data.id} data={data} id={data.id} onPriceCalc={onPriceCalc}/>)
                  }
 
                     </ul>
@@ -31,11 +39,11 @@ const ShoppingBasket=({selectCount,onCounter,onDelete})=>{
                     <ul>
                         <li>
                             <span>Price</span>
-                            <span>$40</span>
+                            <span>{priceResult}</span>
                         </li>
                         <li>
                             <span>Shopping</span>
-                            <span>free</span>
+                            <span>{}</span>
                         </li>
             
                     </ul>

@@ -8,12 +8,17 @@ import SelectBox from "../Components/SelectBox";
 import List from "../Components/List";
 import {AiFillShopping} from "react-icons/ai";
 import OrderContainer from "../Conatiners/OrderContainer";
+import ShoppingBasket from "./ShoppingBasket";
 
-const Order=({onAdd})=>{
+const Order=({onAdd,selectContent,onDelete,onCounter})=>{
+
+
+    const price=26000;
+
     // 화면 출력용 데이터
     const [listData,setListData]=useState([{
-        id:0,
-        count:'',
+        id:1000,
+        count:0,
         size:'',
         color:'',
     }]);
@@ -24,7 +29,7 @@ const Order=({onAdd})=>{
 
 
     // count,calc
-    const [count,setCount]=useState(1);
+    const [count,setCount]=useState(0);
     const [allCount,setAllCount]=useState(0);
     const [calc,setCalc]=useState(0);
     const [cart,setCart]=useState(0);
@@ -39,24 +44,21 @@ const Order=({onAdd})=>{
     const [colorCh,setColorCh]=useState("black");
     const colorChange=useCallback((color)=>{setColorCh(color);},[colorCh]);
 
-    const price=26000;
 
 
     // 카운트
     const onIncrease=(count)=>{
+
         setCount(count);
     }
     const allCountFunc=(allCount)=>{
         setAllCount(allCount);
         setCalc((Number(price)*(allCount)));
     }
-    // const alldeCountFunc=(allCount)=>{
-    //     setAllCount(allCount);
-    //     setCalc((Number(price)*(allCount)));
-    // }
+
     const onDecrese=(count)=>{setCount(count);}
 
-    // const OnCounterFunc=(id,counter)=>{onCounter(id,counter);}
+
 
 
     // select box
@@ -65,8 +67,6 @@ const Order=({onAdd})=>{
     const [colorSelected,setColorSetSelected]=useState('');
     const [sizeSelected,setSizeSetSelected]=useState('');
 
-    // 확인용
-    // const [selectCheck,setSelectCheck]=useState('');
 
     const onSelect=(e)=>{
         setSizeSetSelected(e.target.value);
@@ -86,8 +86,6 @@ const Order=({onAdd})=>{
                 addOrder(count); 
                 setColorSetSelected('');
                 setSizeSetSelected('');
-                cartVal+=1;
-                console.log(cartVal);
             }
          
             
@@ -98,8 +96,8 @@ const Order=({onAdd})=>{
     //출력용 리스트 변경
     //추가
     const addOrder=(count)=>{
-    
         setListId(listId=>listId+1);
+        console.log(count);
         const listDataAdd={
             id:listId,
             count:count,
@@ -109,29 +107,32 @@ const Order=({onAdd})=>{
         setListData(listData.concat(listDataAdd));
         // setCart(cart=>cart+1);
         setAllCount(allCount=>allCount+=1);
-        allCountFunc(allCount+=1);
+        allCountFunc((allCount+1));
 
     }
     //삭제
     const deleteOrder=(id)=>{
         setListData(listData.filter(list=>list.id!==id));
-        cartVal>0?cartVal--:cartVal=0;
+        setCart(cart=>cart-1);
     }
 
 
         
     // 실제장바구니 값 
     const cartListAdd=()=>{
-        onAdd(listData);
-        setListData([{
-            id:0,
-            count:'',
-            size:'',
-            color:'',
-        }]);
-        setAllCount(0);
-        setCalc(0);
-        setCart(cartVal);
+        if(count!==0){
+            onAdd(listData);
+            setCart(listId-1);
+            // setListData([{
+            //     id:1000,
+            //     count:'',
+            //     size:'',
+            //     color:'',
+            // }]);
+            setListData([]);
+            setAllCount(0);
+            setCalc(0);
+        }
     }
 
 
@@ -141,12 +142,17 @@ const Order=({onAdd})=>{
         setCartShow(!cartShow);
     }
 
+
+
 return(
     <section >
         <header>
             <h1>The Palete</h1>
             <span>포트폴리오용으로 작업된 사이트입니다.</span>
-            <div onClick={cartShowFunc}> <AiFillShopping size={25}/><span>{cart}</span></div>
+            <div onClick={cartShowFunc}> 
+                <AiFillShopping size={25}/>
+                {/* <span>{selectContent.data_con.length>1?cart:0}</span> */}
+            </div>
         </header>
         <article className="body_box">
            <article className="pic_box">
@@ -189,7 +195,7 @@ return(
                         {color.map((select,idx)=><option  value={select} key={idx}>{select}</option>)}
                     </select>
                     <hr/>
-                    <p>최대 구매 수량 5개</p>
+                    <p>최대 선택 수량 5개</p>
                     <hr/>
                     <div>
                         <List data={listData} count={count} onIncrease={onIncrease} onDecrese={onDecrese} allCount={allCount} allCountFunc={allCountFunc}  deleteOrder={deleteOrder}/>
@@ -205,7 +211,9 @@ return(
                 </div>
             </article>
         </article>
-   {cartShow?<OrderContainer/>:''}
+   {/* {cartShow?<OrderContainer/>:''} */}
+        {selectContent.data_con.length>0?selectContent.data_con.map(m=><div key={m.id}>{m.id}</div>):''}
+       {cartShow? <ShoppingBasket selectCount={selectContent} onCounter={onCounter} onDelete={onDelete} price={price}/>:''}
     </section>
 )
     

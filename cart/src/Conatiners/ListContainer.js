@@ -6,7 +6,7 @@ import Order from "../Page/Order";
 
 
 const ListContainer=()=>{
-
+    const selectContent=useSelector(state=>state.cart);
     const dispatch=useDispatch();
     const onAdd=useCallback((data)=>dispatch(add(data)),[dispatch]);
     const onDelete=useCallback((id)=>dispatch(remove(id)),[dispatch]);
@@ -17,7 +17,7 @@ const ListContainer=()=>{
     return(
         // <List data={selectCont} count={count} onDecrese={onDecrese} onIncrease={onIncrease} allCount={allCount} allCountFunc={allCountFunc} alldeCountFunc={alldeCountFunc}  />
         <>
-        <Order onAdd={onAdd} />
+        <Order onAdd={onAdd} selectContent={selectContent} onDelete={onDelete} onCounter={onCounter}/>
         </>
     )
 }
