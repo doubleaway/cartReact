@@ -151,7 +151,7 @@ return(
             <span>포트폴리오용으로 작업된 사이트입니다.</span>
             <div onClick={cartShowFunc}> 
                 <AiFillShopping size={25}/>
-                {/* <span>{selectContent.data_con.length>1?cart:0}</span> */}
+                <span>{selectContent.data_con.length>1?cart:0}</span>
             </div>
         </header>
         <article className="body_box">
@@ -212,7 +212,7 @@ return(
             </article>
         </article>
    {/* {cartShow?<OrderContainer/>:''} */}
-        {selectContent.data_con.length>0?selectContent.data_con.map(m=><div key={m.id}>{m.id}</div>):''}
+        {selectContent.data_con.map(m=><div key={m.id}>{m.id}</div>)}
        {cartShow? <ShoppingBasket selectCount={selectContent} onCounter={onCounter} onDelete={onDelete} price={price}/>:''}
     </section>
 )
