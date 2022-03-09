@@ -25,17 +25,16 @@ const ListItem=({data,count,onIncrease,onDecrese,allCount,allCountFunc,deleteOrd
         else{
         allCountFunc(allCount-1);
         setTest(test-1);
-        onDecrese(test);
+        onDecrese(test,id);
 
         }
 
     }
     const increase=()=>{
-        if(allCount<5){
+        if(allCount<10){
             allCountFunc(allCount+1);
             setTest(test=>test+1)
-            onIncrease(test);
-            console.log(test);
+            onIncrease(test,id);
         }
 
     }

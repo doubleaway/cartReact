@@ -13,6 +13,9 @@ const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
     const deleteOrder=(id)=>{
         onDelete(id);
     }
+
+        console.log(selectCount.data_con.map(sel=>sel.count));
+  
     return (
         <>
         <section className="shopping_cart">
@@ -27,10 +30,12 @@ const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
                         <li>Count</li>
                     </ul>
 
-                    <ul >
+                    <ul>
                     {
-                     selectCount.data_con.map(data=>data.id==1000||data.id===0?'':<CartListItem deleteOrder={deleteOrder} onCounter={onCounter} key={data.id} data={data} id={data.id} onPriceCalc={onPriceCalc}/>)
-                 }
+                   selectCount.data_con.length>1?selectCount.data_con.map(data=>data.id==1000||data.id===0?'':<CartListItem deleteOrder={deleteOrder} onCounter={onCounter} key={data.id} data={data} id={data.id} onPriceCalc={onPriceCalc}/>):<li className="cart_default">{selectCount.default}</li>
+                   }
+            
+                 
 
                     </ul>
                 </article>

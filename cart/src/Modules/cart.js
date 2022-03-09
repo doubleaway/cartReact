@@ -6,7 +6,7 @@ const data={
     default:"이 장바구니는 비어있습니다.",
     data_con:[{
         id:0,
-        count:'',
+        count:0,
         size:'',
         color:''
     }]

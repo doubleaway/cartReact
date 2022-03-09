@@ -29,7 +29,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
 
     // count,calc
-    const [count,setCount]=useState(0);
+    const [countVal,setCount]=useState(0);
     const [allCount,setAllCount]=useState(0);
     const [calc,setCalc]=useState(0);
     const [cart,setCart]=useState(0);
@@ -47,16 +47,28 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
 
     // 카운트
-    const onIncrease=(count)=>{
-
+    const onIncrease=(count,id)=>{
         setCount(count);
+        setListData(listData.map(
+            list => list.id === id
+            ? {...list, count:count }
+            : list
+          ));
+   
     }
     const allCountFunc=(allCount)=>{
         setAllCount(allCount);
         setCalc((Number(price)*(allCount)));
     }
 
-    const onDecrese=(count)=>{setCount(count);}
+    const onDecrese=(count,id)=>{
+        setCount(count);
+        setListData(listData.map(
+            list => list.id === id
+            ? {...list, count:count }
+            : list
+          ));
+    }
 
 
 
@@ -82,8 +94,8 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
     const onSelectAdd=()=>{
 
-            if(colorSelected!==''&&allCount<5){
-                addOrder(count); 
+            if(colorSelected!==''&&allCount<10){
+                addOrder(countVal); 
                 setColorSetSelected('');
                 setSizeSetSelected('');
             }
@@ -120,7 +132,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
         
     // 실제장바구니 값 
     const cartListAdd=()=>{
-        if(count!==0){
+        if(countVal!==0){
             onAdd(listData);
             setCart(listId-1);
             // setListData([{
@@ -142,7 +154,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
         setCartShow(!cartShow);
     }
 
-
+    console.log(listData);
 
 return(
     <section >
@@ -195,10 +207,10 @@ return(
                         {color.map((select,idx)=><option  value={select} key={idx}>{select}</option>)}
                     </select>
                     <hr/>
-                    <p>최대 선택 수량 5개</p>
+                    <p>최대 선택 수량 10개</p>
                     <hr/>
                     <div>
-                        <List data={listData} count={count} onIncrease={onIncrease} onDecrese={onDecrese} allCount={allCount} allCountFunc={allCountFunc}  deleteOrder={deleteOrder}/>
+                        <List data={listData} count={countVal} onIncrease={onIncrease} onDecrese={onDecrese} allCount={allCount} allCountFunc={allCountFunc}  deleteOrder={deleteOrder}/>
                     </div>
                     <hr/>
                     <div className="result_box">
