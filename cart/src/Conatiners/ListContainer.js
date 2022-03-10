@@ -12,10 +12,6 @@ const ListContainer=()=>{
     const onDelete=useCallback((id)=>dispatch(remove(id)),[dispatch]);
     const onCounter=useCallback((id,counter)=>dispatch(counterChange(id,counter)),[dispatch]);
     
-
-    console.log(selectContent);
-    // const onAdd=(size,color)=>dispatch(size,color);
-    //const id=selectCont.id;
     return(
         // <List data={selectCont} count={count} onDecrese={onDecrese} onIncrease={onIncrease} allCount={allCount} allCountFunc={allCountFunc} alldeCountFunc={alldeCountFunc}  />
         <>

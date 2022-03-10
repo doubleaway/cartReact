@@ -14,14 +14,8 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
 
     const price=26000;
-
     // 화면 출력용 데이터
-    const [listData,setListData]=useState([{
-        id:1000,
-        count:0,
-        size:'',
-        color:'',
-    }]);
+    const [listData,setListData]=useState([]);
 
 
     var cartVal=0;
@@ -109,7 +103,6 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
     //추가
     const addOrder=(count)=>{
         setListId(listId=>listId+1);
-        console.log(count);
         const listDataAdd={
             id:listId,
             count:count,
@@ -161,7 +154,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 test22.forEach( (item) => {
     test3 += item;
   });
-    console.log(test3);
+
 
 return(
     <section >
@@ -170,7 +163,7 @@ return(
             <span>포트폴리오용으로 작업된 사이트입니다.</span>
             <div onClick={cartShowFunc}> 
                 <AiFillShopping size={25}/>
-                <span>{selectContent.data_con.length>1?cart:0}</span>
+                <span>{selectContent.data_con.length>1?selectContent.data_con.length-1:0}</span>
             </div>
         </header>
         <article className="body_box">

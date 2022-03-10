@@ -4,47 +4,34 @@ import React,{useEffect, useState} from  "react";
 const CartListItem=({data,key,onPriceCalc,id,deleteOrder,onCounter})=>{
 
 
-    // console.log(data);
     const {color,size,count}=data;  
-    const [test,setTest]=useState(count);
-    const [result,setResult]=useState(0);
     var title="무지 오리지널 후드티"
     var img='./img/'+color+'cloth (1).png';
 
     const onClick=()=>{
-        // if(allCount<=0||test<=0){}
+        if(0<count)
+            onCounter(id,count-1);
+        else{
+            deleteOrder(id);
+        }  
 
-        // else{
-        // alldeCountFunc(allCount-1);
-        setTest(test-1);
-        // onDecrese(test);
-        onCounter(id,count-1);
-        // }
 
     }
     const increase=()=>{
-        // if(allCount<5){
-            // allCountFunc(allCount+1);
-            setTest(test+1)
-            // onIncrease(test);
-            onCounter(id,count+1);
 
-        // }
+            onCounter(id,count+1)
 
     }
 
-    console.log(id);
-    console.log(test);
 
     const onRemove=()=>{
         deleteOrder(id);
-        // console.log(id);
     }
     
 
     return   (
        
-                <ul className="shopping_list" >
+                <ul className="shopping_list">
                         <li><img src={img}/><span>{title} {color}</span></li>
                         <li>{color}</li>
                         <li>{size}</li>
