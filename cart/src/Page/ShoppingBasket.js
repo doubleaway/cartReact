@@ -6,6 +6,7 @@ import CartListItem from "../Components/cartList";
 
 const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
 
+ 
 
     const deleteOrder=(id)=>{
         onDelete(id);

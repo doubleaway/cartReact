@@ -29,7 +29,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
 
     // count,calc
-    const [countVal,setCount]=useState(0);
+    const [countVal,setCount]=useState(1);
     const [allCount,setAllCount]=useState(0);
     const [calc,setCalc]=useState(0);
     const [cart,setCart]=useState(0);

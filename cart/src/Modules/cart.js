@@ -70,14 +70,19 @@ export default function cart(state=data,action){
         }
 
         case QUANTITY:
-            console.log(action.id)
+            console.log(action.counter);
+            return {
+                data_con:state.data_con.map( memo => memo.id === action.id ? {...memo, count:action.counter} : memo)
+            }
             // return  state.map( memo => memo.id === action.id ? {...memo, counter: action.counter} : memo)
-            // {
+        //    return {
                 
-                // ...state,
-                //  counter:state.map( count => count.id === action.id ? {...count, counter: action.counter} : count)
+        //         ...state,
+        //          count:state.data_con.map( count => count.id === action.id ? {...count, counter: action.counter} : count)
+        //         //  count:state.data_con.map( count => count.id === action.id ? console.log(action.counter) :  console.log(count.id+"아이디 안 같음") )
+        
                
-            // }
+        //     }
 
 
         case REMOVE:
