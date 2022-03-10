@@ -5,17 +5,15 @@ import CartList from "../Components/cartList";
 import CartListItem from "../Components/cartList";
 
 const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
-    const [priceResult,setPriceResult]=useState(26000);
-    const onPriceCalc=(count)=>{
-       setPriceResult(price*count);
-    }
+
 
     const deleteOrder=(id)=>{
         onDelete(id);
     }
 
-        console.log(selectCount.data_con.map(sel=>sel.count));
-  
+        // console.log(selectCount.data_con.map(sel=>sel.count*price));
+    let allPrice=price>100000?'free':'5,000';
+    let totalPrice=price>100000?price:price+5000
     return (
         <>
         <section className="shopping_cart">
@@ -32,7 +30,7 @@ const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
 
                     <ul>
                     {
-                   selectCount.data_con.length>1?selectCount.data_con.map(data=>data.id==1000||data.id===0?'':<CartListItem deleteOrder={deleteOrder} onCounter={onCounter} key={data.id} data={data} id={data.id} onPriceCalc={onPriceCalc}/>):<li className="cart_default">{selectCount.default}</li>
+                   selectCount.data_con.length>1?selectCount.data_con.map(data=>data.id==1000||data.id===0?'':<CartListItem deleteOrder={deleteOrder} onCounter={onCounter} key={data.id} data={data} id={data.id} />):<li className="cart_default">{selectCount.default}</li>
                    }
             
                  
@@ -44,17 +42,17 @@ const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
                     <ul>
                         <li>
                             <span>Price</span>
-                            <span>{priceResult}</span>
+                            <span>{price.toLocaleString('ko-KR')}</span>
                         </li>
                         <li>
                             <span>Shopping</span>
-                            <span>{}</span>
+                            <span>{allPrice}</span>
                         </li>
             
                     </ul>
                     <ul className="total_box">
                         <li><h1>Total</h1></li>
-                        <li><h1>$40</h1></li>
+                        <li><h1>{totalPrice.toLocaleString('ko-KR')}</h1></li>
                     </ul>
                 </article>
             </div>

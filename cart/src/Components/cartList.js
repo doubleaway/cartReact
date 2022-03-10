@@ -51,9 +51,9 @@ const CartListItem=({data,key,onPriceCalc,id,deleteOrder})=>{
                         <li>{color}</li>
                         <li>{size}</li>
                         <li className="count_box">
+                        <span>-</span>
+                            <span>{count}</span>
                             <span>+</span>
-                            <span>{count+1}</span>
-                            <span>-</span>
                         </li>
                         <li onClick={onRemove}><span className="close_btn">X</span></li>
                     </ul>

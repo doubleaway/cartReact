@@ -51,7 +51,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
         setCount(count);
         setListData(listData.map(
             list => list.id === id
-            ? {...list, count:count }
+            ? {...list, count:count+1 }
             : list
           ));
    
@@ -65,7 +65,7 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
         setCount(count);
         setListData(listData.map(
             list => list.id === id
-            ? {...list, count:count }
+            ? {...list, count:(count+1) }
             : list
           ));
     }
@@ -154,7 +154,14 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
         setCartShow(!cartShow);
     }
 
-    console.log(listData);
+    
+
+   
+   var test22=selectContent.data_con.map(data=>(data.count!==0?26000*(data.count):data.count));   var test3=0
+test22.forEach( (item) => {
+    test3 += item;
+  });
+    console.log(test3);
 
 return(
     <section >
@@ -225,7 +232,8 @@ return(
         </article>
    {/* {cartShow?<OrderContainer/>:''} */}
         {selectContent.data_con.map(m=><div key={m.id}>{m.id}</div>)}
-       {cartShow? <ShoppingBasket selectCount={selectContent} onCounter={onCounter} onDelete={onDelete} price={price}/>:''}
+       {cartShow? <ShoppingBasket selectCount={selectContent} onCounter={onCounter} onDelete={onDelete} price={test3}
+       />:''}
     </section>
 )
     
