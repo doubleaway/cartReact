@@ -76,7 +76,10 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
     const onSelect=(e)=>{
         setSizeSetSelected(e.target.value);
+        console.log(sizeSelected)
+        if(colorSelected==''){
         setColorSetSelected('');
+        }
     }
 
 
@@ -87,8 +90,8 @@ const Order=({onAdd,selectContent,onDelete,onCounter})=>{
 
 
     const onSelectAdd=()=>{
-
-            if(colorSelected!==''&&allCount<10){
+        console.log(sizeSelected);
+            if(sizeSelected!==''&&colorSelected!==''&&allCount<10){
                 addOrder(countVal); 
                 setColorSetSelected('');
                 setSizeSetSelected('');
@@ -198,9 +201,10 @@ return(
                     </div>
                 </div>
                 <div className="select_box">
-                        <select  value={sizeSelected} onChange={onSelect}>
-                                <option value=''>사이즈를 선택해주세요</option>
-                            {size.map((select,idx)=><option value={select} key={idx}>{select}</option>)}
+                    <select  value={sizeSelected} onChange={onSelect}  onClick={onSelectAdd}>
+                        <option value=''>사이즈를 선택해주세요</option>
+                            {size.map((select,idx)=><option value={select} key={idx}>{select}
+                        </option>)}
                     </select>
                     <select  value={colorSelected}  onChange={onColorSelect} onClick={onSelectAdd}>
                         <option value=''>색상을 선택해주세요</option>

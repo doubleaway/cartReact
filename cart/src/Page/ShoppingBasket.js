@@ -42,17 +42,17 @@ const ShoppingBasket=({selectCount,onCounter,onDelete,price})=>{
                     <ul>
                         <li>
                             <span>Price</span>
-                            <span>{price.toLocaleString('ko-KR')}</span>
+                            <span>{price==0?"0":price.toLocaleString('ko-KR')}</span>
                         </li>
                         <li>
                             <span>Shopping</span>
-                            <span>{allPrice}</span>
+                            <span>{price==0?"0":allPrice}</span>
                         </li>
             
                     </ul>
                     <ul className="total_box">
                         <li><h1>Total</h1></li>
-                        <li><h1>{totalPrice.toLocaleString('ko-KR')}</h1></li>
+                        <li><h1>{price==0?"0":totalPrice.toLocaleString('ko-KR')}</h1></li>
                     </ul>
                 </article>
             </div>
